@@ -8,7 +8,7 @@ const InstituicaoSelecionadaDao = new Schema({
       ref: 'Instituicao',
       required: true
   },
-   areaInteresse :{
+   areaInterese :{
     type: String
    },
    modalidadeServicoVoluntario:{

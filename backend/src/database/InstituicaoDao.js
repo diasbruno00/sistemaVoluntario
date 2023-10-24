@@ -11,7 +11,10 @@ const InstituicaoDao = new Schema({
     causa: {
         type: String
     },
-    docaoMinima: {
+    numeroVagasVoluntario:{
+        type: Number
+    },
+    doacaoMinima: {
         type: Number
     }
 });

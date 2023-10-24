@@ -6,11 +6,14 @@ export default class InstituicaoController {
 
   async salvarInstituicao(req, res) {
     try {
-      const { nome, localizacao, causa, doacaoMinima } = req.body;
+      const { nome, localizacao, causa, numeroVagasVoluntario, doacaoMinima } = req.body;
 
-      const instuicao = new Instituicao(nome, localizacao, causa, doacaoMinima);
+      const instuicao = new Instituicao(nome, localizacao, causa, numeroVagasVoluntario, doacaoMinima);
+
+      console.log(instuicao)
 
       const response = await InstituicaoDao.create(instuicao);
+      console.log(response)
 
       res.json({ sucesso: `${response.nome} salvo com sucesso` });
     } catch (error) {

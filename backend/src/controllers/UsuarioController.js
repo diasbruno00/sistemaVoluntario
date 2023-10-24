@@ -20,11 +20,9 @@ export default class UsuarioController {
         estado
       );
 
-      console.log(usuario);
 
       const response = await UsuarioDao.create(usuario);
 
-      console.log(response);
 
       res.json({ sucesso: `${usuario.nome} salvo com sucesso ` });
     } catch (error) {

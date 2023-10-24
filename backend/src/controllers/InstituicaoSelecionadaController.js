@@ -18,9 +18,13 @@ export default class InstituicaoSelecionadaController {
         duracaoServico
       );
 
+      console.log(instituicao)
+
       const instituicaoSelecionadaSalva = await InstituicaoSlecionadaDao.create(
         instituicao
       );
+      console.log(instituicaoSelecionadaSalva)
+
       res.json({ sucesso: `Salvo com sucesso` });
     } catch (error) {
       res.json({ erro: `Erro ao salvar instituicao selecionada` });
