@@ -18,7 +18,11 @@ export default function Menu() {
 
                     
                         <li className="nav-item">
-                            <Link className="nav-link" href={'/instituicao/list'}>Instituições</Link>
+                            <Link className="nav-link" href={'/instituicao/create'}>Cadastro instituições</Link>
+                        </li>
+
+                        <li className="nav-item">
+                            <Link className="nav-link" href={'/instituicao/list'}>Instituição com vagas</Link>
                         </li>
 
                         <li className="nav-item">
@@ -27,7 +31,7 @@ export default function Menu() {
 
                         
                         <li className="nav-item">
-                            <Link className="nav-link" href={''}>Area adiminstrativa</Link>
+                            <Link className="nav-link" href={'/areaAdmin'}>Area adiminstrativa</Link>
                         </li>
 
                 
@@ -36,7 +40,7 @@ export default function Menu() {
                         </li>
 
                         <li className="nav-item">
-                            <Link className="nav-link" href={''}>Sobre nos</Link>
+                            <Link className="nav-link" href={'/sobreNos'}>Sobre nos</Link>
                         </li>
 
 

@@ -20,7 +20,7 @@ export default function Home() {
 
               <button className="btn btn-danger" onClick={()=>{
                 console.log('click')
-                push('/pessoas/create')
+                push('/usuario/create')
               }}>
                 Seja um voluntario
               </button> 
