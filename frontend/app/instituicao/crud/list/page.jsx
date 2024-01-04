@@ -5,6 +5,8 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
+import Swal from "sweetalert2";
+
 
 import axios from 'axios'
 
@@ -74,10 +76,21 @@ export default function ListarInstituicao() {
                                     <td>{instituicao.doacaoMinima}</td>
 
                                     <button type="button" className="btn btn-info" onClick={() => {
-                                            push(`/instituicao/selecionada/${instituicao._id}`)}}> Canditadar-se à vaga</button>
+                                            push(`/instituicao/crud/edit/${instituicao._id}`)}}>Editar</button>
 
-                                    <button type="button" className="btn btn-warning" onClick={() => {
-                                            push(`/instituicao/doacao/${instituicao._id}`)}}>Fazer doação</button>
+                                    <button type="button" className="btn btn-warning" onClick={ async () => {
+                                           await axios.delete(`http://localhost:3333/instituicao/${instituicao._id}`)
+
+                                           await Swal.fire(
+                                            'Good job!',
+                                            `${instituicao.nome} excluido com sucesso do banco de dados`,
+                                            'success'
+                                        )
+
+                                        window.location.reload()
+
+                                        }}>Excluir</button>
+                                           
 
                                 </tr>
                             )

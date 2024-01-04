@@ -12,9 +12,6 @@ const DoacaoDao = new Schema({
         ref: 'Instituicao',
         required: true
     },
-    nome: {
-        type: String
-    },
     cpf: {
         type: String
     },
@@ -24,10 +21,10 @@ const DoacaoDao = new Schema({
     tipoPagamento: {
         type: String
     },
-    numeroDoCartao: {
+    numeroCartao: {
       type: String
     },
-    coigoSeguranca: {
+    codigoSeguranca: {
         type: Number
     },
     status: {

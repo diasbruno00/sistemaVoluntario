@@ -45,6 +45,20 @@ export default class UsuarioController {
     }
   }
 
+  async buscarTodosUsuarios(req, res){
+    try{
+
+      const ListaDeUsuario = await UsuarioDao.find();
+      
+      console.log(ListaDeUsuario)
+
+      res.json(ListaDeUsuario)
+
+    }catch(error){
+      res.json({ error: `Erro ao buscar todos os usuarios` });
+    }
+  }
+
   async editarUsuario(req, res) {
     try {
       const id = req.params.id;

@@ -19,7 +19,14 @@ const InstituicaoSelecionadaDao = new Schema({
    },
    status: {
       typeof: String
+   },
+   
+   usuarioId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Usuario',
+      required: true
    }
+
 });
 
 export default  mongoose.model("InstituicaoSelecionada", InstituicaoSelecionadaDao);

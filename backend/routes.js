@@ -15,6 +15,7 @@ const instituicaoSelecionadaController = new InstituicaoSelecionadaController()
 // Usuario rotas
 rotas.post('/usuario', usuarioController.salvarUsuario)
 rotas.get('/usuario/:id',usuarioController.buscarUsuarioID)
+rotas.get('/usuario', usuarioController.buscarTodosUsuarios)
 rotas.put('/usuario/:id', usuarioController.editarUsuario)
 
 

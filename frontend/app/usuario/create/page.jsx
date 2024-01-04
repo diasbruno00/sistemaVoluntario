@@ -6,6 +6,7 @@ import axios from 'axios'
 import Swal from "sweetalert2";
 
 
+
 export default  function CadastroUsuario() {
 
     const [nome, setNome] = useState('')
@@ -16,6 +17,8 @@ export default  function CadastroUsuario() {
     const [telefone,setTelefone ] = useState('')
     const [cidade, setCidade] = useState('')
     const [estado, setEstado] = useState('')
+
+
 
     const handleSumit = async (event) => {
 

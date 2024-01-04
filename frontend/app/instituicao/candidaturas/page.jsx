@@ -5,6 +5,8 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
+import Swal from 'sweetalert2';
+
 
 import axios from 'axios'
 
@@ -56,11 +58,10 @@ export default function ListaDeMinhasCandidaturas(){
             <table className="table" >
                 <thead>
                     <tr>
-                        <th scope="col">Nome</th>
+                        <th scope="col">Nome Usuario</th>
+                        <th scope="col">Nome instituicao</th>
                         <th scope="col">localização</th>
                         <th scope="col">Causa</th>
-                        <th scope="col">Numero de vagas de Voluntario</th>
-                        <th scope="col">Doação Minima</th>
                         <th scope='col'>Area de Interesse</th>
                         <th scope='col'>Modalidade do serviço voluntario</th>
                         <th scope='col'>Duracao Servico </th>
@@ -72,23 +73,26 @@ export default function ListaDeMinhasCandidaturas(){
                         listaFiltrada.map((valor) => {
                             return (
                                 <tr key={valor._id} className="">
+                                    <td>{valor.usuarioId.nome}</td>
+
                                     <td>{valor.instituicao.nome}</td>
                                     <td>{valor.instituicao.localizacao}</td>
                                     <td>{valor.instituicao.causa}</td>
-                                    <td>{valor.instituicao.numeroVagasVoluntario}</td>
-                                    <td>{valor.instituicao.doacaoMinima}</td>
                                     <td>{valor.areaInterese}</td>
                                     <td>{valor.modalidadeServicoVoluntario}</td>
                                     <td>{valor.duracaoServico}</td>
 
 
-                                    <button type="button" className="btn btn-info" onClick={() => {
-                                            push(``)}}> </button>
+                                    <button type="button" className="btn btn-success" onClick={ async () => {
+                                        console.log(`clicou`)
+                                         await  Swal.fire(
+                                            'Good job!',
+                                            `${valor.usuarioId.nome}, informações sobre as próximas etapas que serão enviadas por e-mail. `,
+                                            'success'
+                                        )
+                                    }}>Confirmar</button>
 
-                                    <button type="button" className="btn btn-warning" onClick={() => {
-                                            push(``)}}> </button>
-
-
+                                   
                                 </tr>
                             )
 

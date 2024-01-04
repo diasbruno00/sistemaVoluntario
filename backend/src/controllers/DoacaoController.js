@@ -8,13 +8,15 @@ export default class DoacaoController {
     try {
       const idUsuario = req.params.idUsuario;
       const idInstituicao = req.params.idInstituicao;
-      const { nome, cpf, valor, tipoPagamento, numeroCartao, codigoSeguranca } =
+
+      const {  cpf, valor, tipoPagamento, numeroCartao, codigoSeguranca } =
         req.body;
+
+        console.log(req.body)
 
       const doacao = new Doacao(
         idUsuario,
         idInstituicao,
-        nome,
         cpf,
         valor,
         tipoPagamento,
@@ -38,6 +40,8 @@ export default class DoacaoController {
       const listaDeDoacoes = await DoacaoDao.find()
         .populate("usuario")
         .populate("instituicao");
+
+        console.log(listaDeDoacoes)
 
       res.json(listaDeDoacoes);
     } catch (error) {

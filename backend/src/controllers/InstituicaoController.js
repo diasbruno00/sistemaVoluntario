@@ -26,6 +26,7 @@ export default class InstituicaoController {
       const listaDeInstituicao = await InstituicaoDao.find();
 
       res.json(listaDeInstituicao);
+      
     } catch (error) {
       res.json({ erro: `Erro ao buscar todas as instuicao do banco de dados` });
       console.log(error);
@@ -35,9 +36,9 @@ export default class InstituicaoController {
   async editarInstituicao(req, res) {
     try {
       const id = req.params.id;
-      const { nome, localizacao, causa, doacaoMinima } = req.body;
+      const { nome, localizacao, causa,numeroVagasVoluntario, doacaoMinima } = req.body;
 
-      const instituicao = new Instituicao(nome, localizacao, causa, doacaoMinima);
+      const instituicao = new Instituicao(nome, localizacao, causa, numeroVagasVoluntario, doacaoMinima);
 
       const response = await InstituicaoDao.findByIdAndUpdate(id, instituicao, {
         new: true,

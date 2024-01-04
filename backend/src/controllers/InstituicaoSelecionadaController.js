@@ -8,14 +8,15 @@ export default class InstituicaoSelecionadaController {
     try {
       const idInstituicao = req.params.id;
 
-      const { areaInterese, modalidadeServicoVoluntario, duracaoServico } =
+      const { areaInterese, modalidadeServicoVoluntario, duracaoServico, usuarioId} =
         req.body;
 
       const instituicao = new InsituicaoSelecionada(
         idInstituicao,
         areaInterese,
         modalidadeServicoVoluntario,
-        duracaoServico
+        duracaoServico,
+        usuarioId
       );
 
       console.log(instituicao)
@@ -35,7 +36,7 @@ export default class InstituicaoSelecionadaController {
   async buscarTodasInstituicaoSelecionada(req, res) {
     try {
       
-      const listaInstituicoesSelecionada = await InstituicaoSlecionadaDao.find().populate("instituicao");
+      const listaInstituicoesSelecionada = await InstituicaoSlecionadaDao.find().populate("instituicao").populate("usuarioId");
 
       res.json(listaInstituicoesSelecionada);
 
