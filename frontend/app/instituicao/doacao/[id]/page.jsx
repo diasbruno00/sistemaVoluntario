@@ -17,6 +17,10 @@ async function salvarDoacao(idInstituicao, usuarioId, data) {
     return await axios.post(`http://localhost:3333/doacao/${usuarioId}/${idInstituicao}`, data)
 }
 
+async function buscarInstituicaoPorId(id) {
+    const response = await axios.get(`http://localhost:3333/instituicao/${id}`)
+    return response.data
+}
 
 export default function InstituicaoDoacao({ params }) {
 
@@ -30,11 +34,14 @@ export default function InstituicaoDoacao({ params }) {
     const [tipoPagamento, setTipoPagamento] = useState('')
     const [numeroCartao, setNumeroCartao] = useState('')
     const [codigoSeguranca, setCodigoSeguranca] = useState('')
+    const [instituicao, setInstituicao] = useState({})
 
 
     useEffect(() => {
         const fetchData = async () => {
             const lista = await buscarTodosOsUsuarios();
+            const instituicao = await buscarInstituicaoPorId(idInstituicao)
+            setInstituicao(instituicao)
             setListaUsuario(lista);
         };
 
@@ -54,6 +61,16 @@ export default function InstituicaoDoacao({ params }) {
             codigoSeguranca
 
         }
+        if(valor < instituicao.doacaoMinima ){
+
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: `${instituicao.nome} aceita doações a partir de ${instituicao.doacaoMinima}`,
+              });
+
+        }else{
+
         try {
             const response = await salvarDoacao(idInstituicao, usuarioId, data)
 
@@ -79,6 +96,7 @@ export default function InstituicaoDoacao({ params }) {
             console.log(isErrored)
 
         }
+    }
 
 
     }
