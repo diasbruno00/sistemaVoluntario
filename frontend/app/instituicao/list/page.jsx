@@ -51,43 +51,54 @@ export default function ListarInstituicao() {
                     </form>
                 </div>
             </nav>
-            <table className="table" >
-                <thead>
-                    <tr>
-                        <th scope="col">Nome</th>
-                        <th scope="col">localização</th>
-                        <th scope="col">Causa</th>
-                        <th scope="col">Numero de vagas de Voluntario</th>
-                        <th scope="col">Doação Minima</th>
 
-                    </tr>
-                </thead>
-                <tbody>
-                    {
-                        listaFiltrada.map((instituicao) => {
-                            return (
-                                <tr key={instituicao._id} className="">
-                                    <td>{instituicao.nome}</td>
-                                    <td>{instituicao.localizacao}</td>
-                                    <td>{instituicao.causa}</td>
-                                    <td>{instituicao.numeroVagasVoluntario}</td>
-                                    <td>{instituicao.doacaoMinima}</td>
+            {listaFiltrada.length > 0 ? (
 
-                                    <button type="button" className="btn btn-info" onClick={() => {
-                                            push(`/instituicao/selecionada/${instituicao._id}`)}}> Canditadar-se à vaga</button>
+                <table className="table" >
+                    <thead>
+                        <tr>
+                            <th scope="col">Nome</th>
+                            <th scope="col">localização</th>
+                            <th scope="col">Causa</th>
+                            <th scope="col">Numero de vagas de Voluntario</th>
+                            <th scope="col">Doação Minima</th>
 
-                                    <button type="button" className="btn btn-warning" onClick={() => {
-                                            push(`/instituicao/doacao/${instituicao._id}`)}}>Fazer doação</button>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {
+                            listaFiltrada.map((instituicao) => {
+                                return (
+                                    <tr key={instituicao._id} className="">
+                                        <td>{instituicao.nome}</td>
+                                        <td>{instituicao.localizacao}</td>
+                                        <td>{instituicao.causa}</td>
+                                        <td>{instituicao.numeroVagasVoluntario}</td>
+                                        <td>{instituicao.doacaoMinima}</td>
 
-                                </tr>
-                            )
+                                        <button type="button" className="btn btn-info" onClick={() => {
+                                            push(`/instituicao/selecionada/${instituicao._id}`)
+                                        }}> Canditadar-se à vaga</button>
 
-                        })
-                    }
+                                        <button type="button" className="btn btn-warning" onClick={() => {
+                                            push(`/instituicao/doacao/${instituicao._id}`)
+                                        }}>Fazer doação</button>
 
-                </tbody>
-            </table>
+                                    </tr>
+                                )
+
+                            })
+                        }
+
+                    </tbody>
+                </table>
+
+            ) : (
+                <div class="alert alert-primary" role="alert">
+                    <p>Nenhuma instituição cadastrada.</p>
+                </div>
+            )}
         </div>
     )
-    
+
 }

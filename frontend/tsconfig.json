@@ -27,7 +27,7 @@
     ".next/types/**/*.ts",
     "**/*.ts",
     "**/*.tsx"
-, "app/instituicao/crud/list/page.jsx"  ],
+, "app/instituicao/crud/list/page.jsx", "app/components/Menu.jsx"  ],
   "exclude": [
     "node_modules"
   ]

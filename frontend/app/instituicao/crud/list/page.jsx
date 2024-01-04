@@ -53,54 +53,64 @@ export default function ListarInstituicao() {
                     </form>
                 </div>
             </nav>
-            <table className="table" >
-                <thead>
-                    <tr>
-                        <th scope="col">Nome</th>
-                        <th scope="col">localização</th>
-                        <th scope="col">Causa</th>
-                        <th scope="col">Numero de vagas de Voluntario</th>
-                        <th scope="col">Doação Minima</th>
+            
+            {listaFiltrada.length > 0 ? (
 
-                    </tr>
-                </thead>
-                <tbody>
-                    {
-                        listaFiltrada.map((instituicao) => {
-                            return (
-                                <tr key={instituicao._id} className="">
-                                    <td>{instituicao.nome}</td>
-                                    <td>{instituicao.localizacao}</td>
-                                    <td>{instituicao.causa}</td>
-                                    <td>{instituicao.numeroVagasVoluntario}</td>
-                                    <td>{instituicao.doacaoMinima}</td>
+                <table className="table" >
+                    <thead>
+                        <tr>
+                            <th scope="col">Nome</th>
+                            <th scope="col">localização</th>
+                            <th scope="col">Causa</th>
+                            <th scope="col">Numero de vagas de Voluntario</th>
+                            <th scope="col">Doação Minima</th>
 
-                                    <button type="button" className="btn btn-info" onClick={() => {
-                                            push(`/instituicao/crud/edit/${instituicao._id}`)}}>Editar</button>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {
+                            listaFiltrada.map((instituicao) => {
+                                return (
+                                    <tr key={instituicao._id} className="">
+                                        <td>{instituicao.nome}</td>
+                                        <td>{instituicao.localizacao}</td>
+                                        <td>{instituicao.causa}</td>
+                                        <td>{instituicao.numeroVagasVoluntario}</td>
+                                        <td>{instituicao.doacaoMinima}</td>
 
-                                    <button type="button" className="btn btn-warning" onClick={ async () => {
-                                           await axios.delete(`http://localhost:3333/instituicao/${instituicao._id}`)
+                                        <button type="button" className="btn btn-info" onClick={() => {
+                                            push(`/instituicao/crud/edit/${instituicao._id}`)
+                                        }}>Editar</button>
 
-                                           await Swal.fire(
-                                            'Good job!',
-                                            `${instituicao.nome} excluido com sucesso do banco de dados`,
-                                            'success'
-                                        )
+                                        <button type="button" className="btn btn-warning" onClick={async () => {
+                                            await axios.delete(`http://localhost:3333/instituicao/${instituicao._id}`)
 
-                                        window.location.reload()
+                                            await Swal.fire(
+                                                'Good job!',
+                                                `${instituicao.nome} excluido com sucesso do banco de dados`,
+                                                'success'
+                                            )
+
+                                            window.location.reload()
 
                                         }}>Excluir</button>
-                                           
 
-                                </tr>
-                            )
 
-                        })
-                    }
+                                    </tr>
+                                )
 
-                </tbody>
-            </table>
+                            })
+                        }
+
+                    </tbody>
+                </table>
+
+            ) : (
+                <div class="alert alert-primary" role="alert">
+                    <p>Nenhuma instituição cadastrada.</p>
+                </div>
+            )}
         </div>
     )
-    
+
 }

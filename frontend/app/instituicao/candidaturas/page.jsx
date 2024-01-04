@@ -55,6 +55,9 @@ export default function ListaDeMinhasCandidaturas(){
                     </form>
                 </div>
             </nav>
+
+            {listaFiltrada.length > 0 ? (
+
             <table className="table" >
                 <thead>
                     <tr>
@@ -101,6 +104,12 @@ export default function ListaDeMinhasCandidaturas(){
 
                 </tbody>
             </table>
+             ) : (
+                <div class="alert alert-primary" role="alert">
+                    <p>Nenhuma candidatura encontrada.</p>
+                </div>
+             )}
+
         </div>
         
     )
